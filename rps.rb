@@ -1,9 +1,14 @@
 #ROCK PAPER SCISSORS GAME
 puts "\nWelcome,\n This is a simple game of Rock, Paper, Scissors.\n The first to win best 2 out of 3, wins!\n Good luck, and may the odds be ever in your favor."
-sleep(4.5)
+sleep(3.5)
 puts "\nPress enter to continue."
 gets.chomp
 system('cls')
+
+#INITIALIZES OVERALL RECORD.
+player_record = 0
+computer_record = 0
+
 #INITIALIZE SCORES
 player_score = 0
 computer_score = 0
@@ -25,10 +30,10 @@ until answer == 'No'
 
 		until player_choice == 'Rock' || player_choice == 'Paper' || player_choice == 'Scissors'
 			system('cls')
-			puts "Please choose:\n" ; sleep(1)
-			puts "-Rock\n" ; sleep(0.5)
-			puts "-Paper\n" ; sleep(0.5)
-			puts "-Scissors\n" ; sleep(0.5)
+			puts "Please choose:\n" ; sleep(0.75)
+			puts "-Rock\n" ; sleep(0.3)
+			puts "-Paper\n" ; sleep(0.3)
+			puts "-Scissors\n" ; sleep(0.3)
 			player_choice = gets.chomp.capitalize
 		end
 
@@ -40,22 +45,22 @@ until answer == 'No'
 		if player_choice == computer_choice
 			puts "You both picked #{player_choice}, it's a tie! No points awarded."
 		elsif player_choice == 'Rock' && computer_choice == 'Paper'
-			puts 'You lose.'
+			puts 'Paper covers rock, sorry but you lose.'
 			computer_score += 1
 		elsif player_choice == 'Rock' && computer_choice == 'Scissors'
-			puts 'You win.'
+			puts 'Congrats! Rock smashes scissors, you win.'
 			player_score += 1
 		elsif player_choice == 'Paper' && computer_choice == 'Rock'
-			puts 'You win.'
+			puts 'Paper covers rock, you get a point!'
 			player_score += 1
 		elsif player_choice == 'Paper' && computer_choice == 'Scissors'
-			puts 'You lose.'
+			puts 'Scissors cuts paper, you lose a point.'
 			computer_score += 1
 		elsif player_choice == 'Scissors' && computer_choice == 'Rock'
-			puts 'You lose.'
+			puts 'Scissors does not cut rock, you lose.'
 			computer_score += 1
 		else player_choice == 'Scissors' && computer_choice == 'Paper'
-			puts 'You win.'
+			puts 'Scissors > Paper, congrats!'
 			player_score += 1
 		end
 
@@ -69,6 +74,20 @@ until answer == 'No'
 
 	end
 
+	if player_score == 2
+		puts "HOORAY!!! you win!!"
+		player_record += 1
+	elsif computer_score == 2
+		puts "Aww... seems the computer beat you this time."
+		computer_record += 1
+	end
+
+	puts "Player record: #{player_record}" ; sleep(1)
+	puts "Computer record: #{computer_record}" ; sleep(1)
+
+	
+	puts "\nPress enter to continue."
+	gets.chomp
 	system('cls')
 	
 	#PROMPTS PLAYER TO REPLACE #{ANSWER}, IF 'YES' THE LOOP RESTARTS, IF NO THE GAME ENDS.
@@ -84,8 +103,11 @@ until answer == 'No'
 		system('cls')
 		player_score = 0
 		computer_score = 0
-		puts 'Rock, Paper or Scissors?'
-		player_choice = gets.chomp.capitalize
+			puts "Please choose:\n" ; sleep(0.75)
+			puts "-Rock\n" ; sleep(0.3)
+			puts "-Paper\n" ; sleep(0.3)
+			puts "-Scissors\n" ; sleep(0.3)
+			player_choice = gets.chomp.capitalize
 	end
 end
 
