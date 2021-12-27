@@ -1,4 +1,10 @@
+#SIMPLE METHOD TO CAPITALIZE USER INPUT
+def get_cap 
+	gets.chomp.capitalize
+end
+
 #ROCK PAPER SCISSORS GAME
+puts "Version 1.3"; sleep(1.3); system("cls")
 puts "\nWelcome,\n This is a simple game of Rock, Paper, Scissors.\n The first to win best 2 out of 3, wins!\n Good luck, and may the odds be ever in your favor."
 sleep(3.5)
 puts "\nPress enter to continue."
@@ -34,7 +40,7 @@ until answer == 'No'
 			puts "-Rock\n" ; sleep(0.3)
 			puts "-Paper\n" ; sleep(0.3)
 			puts "-Scissors\n" ; sleep(0.3)
-			player_choice = gets.chomp.capitalize
+			player_choice = get_cap
 		end
 
 		#COMPUTER CHOOSES AFTER PLAYER CHOOSES
@@ -88,14 +94,15 @@ until answer == 'No'
 	
 	puts "\nPress enter to continue."
 	gets.chomp
-	system('cls')
+	
 	
 	#PROMPTS PLAYER TO REPLACE #{ANSWER}, IF 'YES' THE LOOP RESTARTS, IF NO THE GAME ENDS.
 	until answer == 'Yes' || answer == 'No'
-		puts 'Would you like to play again?'
-		puts '-Yes'
+		system('cls')
+		puts 'Would you like to play again?' ; sleep(1)
+		puts '-Yes' ; sleep(0.5)
 		puts '-No'
-		answer = gets.chomp.capitalize
+		answer = get_cap
 	end
 	
 	unless answer == 'No'
@@ -107,9 +114,10 @@ until answer == 'No'
 			puts "-Rock\n" ; sleep(0.3)
 			puts "-Paper\n" ; sleep(0.3)
 			puts "-Scissors\n" ; sleep(0.3)
-			player_choice = gets.chomp.capitalize
+			player_choice = get_cap
 	end
 end
 
+system('cls');
 puts 'Thank you for playing!'
-sleep(5)
+sleep(3.5)
