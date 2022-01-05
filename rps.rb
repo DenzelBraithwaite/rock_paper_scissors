@@ -1,3 +1,4 @@
+#test
 #----------Capitalizes user input----------#
 def get_cap 
 	gets.chomp.capitalize
