@@ -1,9 +1,24 @@
-#SIMPLE METHOD TO CAPITALIZE USER INPUT
+#----------Capitalizes user input----------#
 def get_cap 
 	gets.chomp.capitalize
 end
 
-#ROCK PAPER SCISSORS GAME
+#----------Initializes overall record----------#
+player_record = 0
+computer_record = 0
+
+#----------Initializes scores----------#
+player_score = 0
+computer_score = 0
+
+#----------Initializes choices----------#
+player_choice = ''
+computer_choice = ''
+
+#----------Array for computer choices----------#
+choices = ['Rock', 'Paper', 'Scissors']
+
+#----------Game introduction----------#
 puts "Version 1.3"; sleep(1.3); system("cls")
 puts "\nWelcome,\n This is a simple game of Rock, Paper, Scissors.\n The first to win best 2 out of 3, wins!\n Good luck, and may the odds be ever in your favor."
 sleep(3.5)
@@ -11,29 +26,15 @@ puts "\nPress enter to continue."
 gets.chomp
 system('cls')
 
-#INITIALIZES OVERALL RECORD.
-player_record = 0
-computer_record = 0
 
-#INITIALIZE SCORES
-player_score = 0
-computer_score = 0
-
-#INITIALIZE CHOICES
-player_choice = ''
-computer_choice = ''
-
-#ARRAY FOR COMPUTER TO RANDOMLY PICK FROM
-choices = ['Rock', 'Paper', 'Scissors']
-
-#INITIALIZE ANSWER, THIS IS WHAT WILL RESTART THE GAME IF THE PLAYER WOULD LIKE TO TRY AGAIN. DEFAULT VALUE EMPTY.
+#----------Initialize #{answer}. Game will loop until play again #{answer} == 'No'----------#
 answer = ''
-until answer == 'No'
-	
-	#WIPES ANSWER TO ALLOW THE LOOP TO REPROMPT TO PLAY AGAIN.
-	answer = ''
-	until player_score == 2 || computer_score == 2 #BEST 2 OUT OF 3
 
+until answer == 'No'
+	#----------Reinitialize #{answer}, otherwise answer will remain 'Yes' and it'll create an infinite loop.----------#
+	answer = ''
+	
+	until player_score == 2 || computer_score == 2 #Best 2 out of 3----------#
 		until player_choice == 'Rock' || player_choice == 'Paper' || player_choice == 'Scissors'
 			system('cls')
 			puts "Please choose:\n" ; sleep(0.75)
@@ -43,11 +44,12 @@ until answer == 'No'
 			player_choice = get_cap
 		end
 
-		#COMPUTER CHOOSES AFTER PLAYER CHOOSES
+		#----------Computer chooses an element from #{choices} array----------#
 		computer_choice = choices.sample
 
-		#THE GAME HAPPENS BENEATH THIS LINE, EVERY RESULTS DEPENDS ON THE CHOICES MADE BY THE COMPUTER AND THE PLAYER.
+		#----------Else if statements for each round result----------#
 		system('cls')
+
 		if player_choice == computer_choice
 			puts "You both picked #{player_choice}, it's a tie! No points awarded."
 		elsif player_choice == 'Rock' && computer_choice == 'Paper'
@@ -69,21 +71,21 @@ until answer == 'No'
 			puts 'Scissors > Paper, congrats!'
 			player_score += 1
 		end
+	
+		#----------Resets #{player_choice}----------#
+		player_choice = ''
 
+		#----------Displays current score----------#
 		sleep(2)
 		puts "Player score: #{player_score}" ; sleep(1)
 		puts "Computer score: #{computer_score}" ; sleep(2)
 		system('cls')
-
-		#RESETS PLAYER CHOICE
-		player_choice = ''
-
 	end
 
 	if player_score == 2
 		puts "HOORAY!!! you win!!"
 		player_record += 1
-	elsif computer_score == 2
+	else computer_score == 2
 		puts "Aww... seems the computer beat you this time."
 		computer_record += 1
 	end
@@ -96,7 +98,7 @@ until answer == 'No'
 	gets.chomp
 	
 	
-	#PROMPTS PLAYER TO REPLACE #{ANSWER}, IF 'YES' THE LOOP RESTARTS, IF NO THE GAME ENDS.
+	#----------Prompts player to play again, loops if #{answer} == 'Yes'----------#
 	until answer == 'Yes' || answer == 'No'
 		system('cls')
 		puts 'Would you like to play again?' ; sleep(1)
@@ -106,18 +108,19 @@ until answer == 'No'
 	end
 	
 	unless answer == 'No'
-		#REINITIALIZE SCORES
-		system('cls')
+		#----------Reinitializes scores----------#
 		player_score = 0
 		computer_score = 0
-			puts "Please choose:\n" ; sleep(0.75)
-			puts "-Rock\n" ; sleep(0.3)
-			puts "-Paper\n" ; sleep(0.3)
-			puts "-Scissors\n" ; sleep(0.3)
-			player_choice = get_cap
+		system('cls')
+		puts "Please choose:\n" ; sleep(0.75)
+		puts "-Rock\n" ; sleep(0.3)
+		puts "-Paper\n" ; sleep(0.3)
+		puts "-Scissors\n" ; sleep(0.3)
+		player_choice = get_cap
 	end
 end
 
 system('cls');
 puts 'Thank you for playing!'
 sleep(3.5)
+#----------Game finished----------#
